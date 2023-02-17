@@ -1,7 +1,7 @@
 package ru.job4j.concurrent;
 
 public class ConsoleProgress implements Runnable {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Thread progress = new Thread(new ConsoleProgress());
         progress.start();
         try {
@@ -12,6 +12,7 @@ public class ConsoleProgress implements Runnable {
         progress.interrupt();
     }
 
+    @SuppressWarnings("BusyWait")
     @Override
     public void run() {
         int count = 0;
