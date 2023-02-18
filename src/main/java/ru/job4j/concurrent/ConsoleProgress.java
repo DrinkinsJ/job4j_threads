@@ -12,7 +12,6 @@ public class ConsoleProgress implements Runnable {
         progress.interrupt();
     }
 
-    @SuppressWarnings("BusyWait")
     @Override
     public void run() {
         int count = 0;
