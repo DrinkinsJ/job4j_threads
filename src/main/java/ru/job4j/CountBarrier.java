@@ -1,10 +1,15 @@
 package ru.job4j;
 
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
+@ThreadSafe
 public class CountBarrier {
     private final Object monitor = this;
 
     private final int total;
 
+    @GuardedBy("this")
     private int count = 0;
 
     public CountBarrier(final int total) {
@@ -14,7 +19,6 @@ public class CountBarrier {
     public void count() {
         synchronized (monitor) {
             count++;
-            System.out.println(count);
             monitor.notifyAll();
         }
     }
