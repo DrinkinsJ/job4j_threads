@@ -19,7 +19,7 @@ public class SimpleBlockingQueueTest  {
 
         Thread producer = new Thread(
                 () -> {
-                    for (int i = 0; i < queue.getLimit() ; i++) {
+                    for (int i = 0; i < queue.getLimit(); i++) {
                         try {
                             queue.offer(i);
                         } catch (InterruptedException e) {
@@ -46,6 +46,6 @@ public class SimpleBlockingQueueTest  {
         consumer.join();
 
         assertThat(list.get(3), is(3));
-        assertThat(list, is(List.of(0,1,2,3,4,5,6,7,8,9)));
+        assertThat(list, is(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
     }
 }
