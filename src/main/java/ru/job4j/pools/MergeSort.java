@@ -1,7 +1,5 @@
 package ru.job4j.pools;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
     public static int[] sort(int[] array) {
@@ -9,19 +7,12 @@ public class MergeSort {
     }
 
     private static int[] sort(int[] array, int from, int to) {
-
         if (from == to) {
-            return new int[] {
-                    array[from]
-            };
+            return new int[]{array[from]};
         }
-
         int mid = (from + to) / 2;
-
         return merge(
-
                 sort(array, from, mid),
-
                 sort(array, mid + 1, to)
         );
     }
@@ -44,4 +35,5 @@ public class MergeSort {
         }
         return result;
     }
+
 }

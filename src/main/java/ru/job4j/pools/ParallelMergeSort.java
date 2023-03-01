@@ -15,10 +15,16 @@ public class ParallelMergeSort extends RecursiveTask<int[]> {
         this.to = to;
     }
 
+    public static int[] sort(int[] array) {
+        try (ForkJoinPool forkJoinPool = new ForkJoinPool()) {
+            return forkJoinPool.invoke(new ParallelMergeSort(array, 0, array.length - 1));
+        }
+    }
+
     @Override
     protected int[] compute() {
         if (from == to) {
-            return new int[] {array[from]};
+            return new int[]{array[from]};
         }
         int mid = (from + to) / 2;
         ParallelMergeSort leftSort = new ParallelMergeSort(array, from, mid);
@@ -29,10 +35,4 @@ public class ParallelMergeSort extends RecursiveTask<int[]> {
         int[] right = rightSort.join();
         return MergeSort.merge(left, right);
     }
-
-    public static int[] sort(int[] array) {
-        ForkJoinPool forkJoinPool = new ForkJoinPool();
-        return forkJoinPool.invoke(new ParallelMergeSort(array, 0, array.length - 1));
-    }
-
 }
