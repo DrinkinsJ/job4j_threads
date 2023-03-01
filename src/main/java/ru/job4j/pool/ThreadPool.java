@@ -4,8 +4,6 @@ import ru.job4j.SimpleBlockingQueue;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadPool {
     private final List<Thread> threads = new LinkedList<>();
