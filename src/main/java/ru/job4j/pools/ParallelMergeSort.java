@@ -16,9 +16,8 @@ public class ParallelMergeSort extends RecursiveTask<int[]> {
     }
 
     public static int[] sort(int[] array) {
-        try (ForkJoinPool forkJoinPool = new ForkJoinPool()) {
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
             return forkJoinPool.invoke(new ParallelMergeSort(array, 0, array.length - 1));
-        }
     }
 
     @Override
