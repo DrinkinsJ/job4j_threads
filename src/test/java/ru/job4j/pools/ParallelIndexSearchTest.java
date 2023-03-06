@@ -26,7 +26,7 @@ public class ParallelIndexSearchTest {
     @Test
     public void whenSmallArrayFindObj() {
         Object[] array = {"first", "second", "third"};
-        int res = ParallelIndexSearch.find(array, "second");
+        Object res = ParallelIndexSearch.find(array, "second");
         assertThat(res).isEqualTo(1);
     }
 
